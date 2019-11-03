@@ -31,6 +31,19 @@ router.get('/:id',(req,res,next)=>{
     });
 });
 
+/* METODO GET POR Genero GENERO*/
+router.get('/genero/:gen',(req,res,next)=>{
+
+    Canciones.find({ genero: req.params.gen })
+            .then((bikes) => {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(bikes);
+            }, (err) => next(err))
+            .catch((err) => next(err));
+});
+
+
 //-------------------------------------------------------------------------
 // UPDATE - METODO: PUT / ACTUALIZAR
 router.put('/:id',(req,res,next)=>{

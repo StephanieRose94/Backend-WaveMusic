@@ -11,7 +11,7 @@ const usuariosSchema = new Schema({
     edad:{
         type: Number, default: 15
     },
-    contraseña:{
+    password:{
         type: String, required : true
     },
     correo:{
