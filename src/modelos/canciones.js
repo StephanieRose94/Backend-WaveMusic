@@ -22,8 +22,8 @@ const cancionesSchema = new Schema({
         type: String
     },
     src:{
-        type: String}
-
+        type: String
+    }
 });
 
 //exportacion del esquema

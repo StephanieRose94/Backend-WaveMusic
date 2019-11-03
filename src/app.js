@@ -11,17 +11,25 @@ const express = require('express'),
     PORT = 3000,
     BD = 'wave'
 
-mongoose.connect('mongodb://localhost:27017', {
-    dbName: BD,
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-}).then(() => {
-    console.log(`Pudimos ingresar a la base de datos <<${BD}>> con exito!!`)
-}).catch((err) => {
-    console.log(`No hay conexion:${err}`)
-})  
+// mongoose.connect('mongodb://localhost:27017', {
+//     dbName: BD,
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+// }).then(() => {
+//     console.log(`Pudimos ingresar a la base de datos <<${BD}>> con exito!!`)
+// }).catch((err) => {
+//     console.log(`No hay conexion:${err}`)
+// })  
 
- //Cores
+var dev_db_url = 'mongodb://admin:12345@localhost:27017/wave?authSource=admin';
+mongoose.connect(dev_db_url);
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
+
+ //Cors
 app.use((req, res, next) =>{
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
