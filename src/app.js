@@ -5,6 +5,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     canciones = require('./rutas/rutaCanciones'),
     usuarios = require('./rutas/rutaUsuarios'),
+    cancionesliked = require('./rutas/rutaCancionesliked'),
     /* cors = require('cors'), */
 
     app = express(),
@@ -53,6 +54,7 @@ app.use((req, res, next) =>{
 app.use(bodyParser.json()); 
 app.use('/api/canciones', canciones);
 app.use('/api/usuarios', usuarios);
+app.use('/api/cancionesliked', cancionesliked);
 
 //----------------------------------------------------------------------------------
 
