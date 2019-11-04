@@ -43,6 +43,30 @@ router.get('/genero/:gen',(req,res,next)=>{
             .catch((err) => next(err));
 });
 
+/* METODO GET POR Genero TITULO*/
+router.get('/titulo/:titulo',(req,res,next)=>{
+
+    Canciones.find({ titulo: req.params.titulo })
+            .then((bikes) => {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(bikes);
+            }, (err) => next(err))
+            .catch((err) => next(err));
+});
+
+/* METODO GET POR Genero ARTISTA*/
+router.get('/artista/:artista',(req,res,next)=>{
+
+    Canciones.find({ artista: req.params.artista })
+            .then((bikes) => {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(bikes);
+            }, (err) => next(err))
+            .catch((err) => next(err));
+});
+
 
 //-------------------------------------------------------------------------
 // UPDATE - METODO: PUT / ACTUALIZAR
