@@ -29,6 +29,21 @@ router.get('/:id',(req,res,next)=>{
     });
 });
 
+/* METODO GET POR USUARIO*/
+router.get('/Usuario/:correo',(req,res,next)=>{
+
+    Usuarios.find({ correo: req.params.correo })
+            .then((bikes) => {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.json(bikes);
+            }, (err) => next(err))
+            .catch((err) => next(err));
+});
+
+
+
+
 //-------------------------------------------------------------------------
 // UPDATE - METODO: PUT / ACTUALIZAR
 router.put('/:id',(req,res,next)=>{
